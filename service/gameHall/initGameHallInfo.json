@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "data": {
+    "isLoggedIn": false,
+    "playerCurrency": "MMK",
+    "brandName": "M9",
+    "bannerList": [],
+    "platformStatus": {},
+    "announcementList": [],
+    "jackpotAmountMap": {},
+    "bonusEvents": [],
+    "systemTime": 1719231220000
+  }
+}
