@@ -1,123 +1,96 @@
 /* ================================================
-   M9 Asia - Mobile Fix CSS
-   Fixes horizontal overflow & layout on mobile
+   M9 Asia — Mobile Fix v2
+   High-specificity overrides for mobile layout
    ================================================ */
 
-/* 1. Root overflow fix - prevent horizontal scroll */
-html {
-  overflow-x: hidden;
-  max-width: 100%;
-}
-body {
-  overflow-x: hidden;
-  max-width: 100vw;
-  position: relative;
-}
+/* 1. Global overflow fix */
+html { overflow-x: hidden !important; }
+body { overflow-x: hidden !important; max-width: 100vw !important; }
 
-/* 2. Game type navigation tabs - scrollable on mobile */
-.tab-nav-group {
-  width: 100%;
-  overflow: hidden;
-}
-
-.tab-navs {
+/* 2. Tab navigation container — make horizontally scrollable
+   Matches existing specificity: .page-web .page-wrapper .page-content
+   .main-vert-tab .tab-nav-group .tab-navs                              */
+.page-web .page-wrapper .page-content .main-vert-tab .tab-nav-group .tab-navs,
+.page-web .page-wrapper .page-content main.main-vert-tab .tab-nav-group .tab-navs {
   display: flex !important;
   flex-wrap: nowrap !important;
   overflow-x: auto !important;
   overflow-y: hidden !important;
   -webkit-overflow-scrolling: touch;
+  position: relative !important;
+  left: 0 !important;             /* kill the sticky left:3% offset */
+  width: 100% !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  width: 100%;
-  box-sizing: border-box;
+  padding-bottom: 4px;
 }
 
-.tab-navs::-webkit-scrollbar {
+.page-web .page-wrapper .page-content .main-vert-tab .tab-nav-group .tab-navs::-webkit-scrollbar,
+.page-web .page-wrapper .page-content main.main-vert-tab .tab-nav-group .tab-navs::-webkit-scrollbar {
   display: none;
 }
 
-/* Tab items - no shrink, allow natural width */
-.tab-navs > a.tab,
-.tab-navs > div.tab {
+/* 3. Individual tab items — fixed width, don't shrink */
+.page-web .page-wrapper .page-content .main-vert-tab .tab-nav-group .tab-navs .tab,
+.page-web .page-wrapper .page-content main.main-vert-tab .tab-nav-group .tab-navs .tab,
+.page-web.M9 .page-wrapper .page-content main.main-vert-tab .tab-nav-group .tab-navs .tab {
   flex: 0 0 auto !important;
-  min-width: 58px !important;
-  max-width: 76px !important;
-  box-sizing: border-box;
+  width: 65px !important;
+  min-width: 60px !important;
+  max-width: 75px !important;
+  box-sizing: border-box !important;
 }
 
-/* 3. Banner / Swiper overflow fix */
-#swiperBanner,
-.swiper-banner,
-.swiper {
-  max-width: 100vw;
+/* 4. Tab group container — no overflow */
+.page-web .page-wrapper .page-content .main-vert-tab .tab-nav-group {
   overflow: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
 }
 
-/* 4. Page containers */
+/* 5. Banner / Swiper — contain within viewport */
+.swiper-banner,
+#swiperBanner,
+.swiper.swiper-banner {
+  overflow: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* 6. All swiper wrappers */
+.swiper-wrapper {
+  max-width: none;   /* let swiper do its own width */
+}
+
+/* 7. Page structural elements */
+.page-web,
 .page-wrapper,
 .page-content,
-.page-web,
-.page-body,
+.page-body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+}
+
+/* 8. Section containers */
 .section-box,
+.main-vert-tab,
 main {
-  max-width: 100vw;
-  overflow-x: hidden;
-  box-sizing: border-box;
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
 }
 
-/* 5. Marquee text overflow fix */
-.marquee-txt,
-.marquee {
-  max-width: 100vw;
-  overflow: hidden;
-}
+/* 9. Marquee / announcement bar */
+.marquee-txt, .marquee { overflow: hidden !important; max-width: 100vw !important; }
 
-/* 6. Navigation container */
-.navigation-container,
-.header-navigation {
-  max-width: 100vw;
-  box-sizing: border-box;
-}
-
-/* 7. Hot table / Live swiper container */
-.swiper-container {
-  overflow: hidden !important;
-  max-width: 100vw;
-}
-
-/* 8. Mobile-specific refinements */
-@media screen and (max-width: 767px) {
-  /* Smaller tab icons on very small screens */
-  .tab-navs > a.tab img,
-  .tab-navs > div.tab img {
-    width: 36px !important;
-    height: 36px !important;
-    object-fit: contain;
-  }
-
-  .tab-navs > a.tab p,
-  .tab-navs > div.tab p {
-    font-size: 10px !important;
-    margin: 2px 0 0 !important;
-    white-space: nowrap;
-  }
-
-  /* Ensure images don't overflow */
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* Modal overflow safe */
-  .modal-box,
-  .modal-main {
-    max-width: 100vw;
-    box-sizing: border-box;
-  }
-
-  /* Section ul game list grid fix */
-  .section-ul.game-list-ul {
-    width: 100% !important;
-    box-sizing: border-box;
-  }
+/* 10. Sub-tab row (DICE / CRASH / MINE) */
+.page-web .page-wrapper .page-content .main-vert-tab .tab-nav-group.tab-nav-group-s .tab-navs {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  left: 0 !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  scrollbar-width: none;
 }
