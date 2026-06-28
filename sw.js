@@ -1,4 +1,4 @@
-const CACHE_NAME = 'MyCasino-cache-v202606111742';
+const CACHE_NAME = 'MyCasino-cache-v202606281500';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -7,7 +7,8 @@ const STATIC_ASSETS = [
   '/css/style.css',
   '/css/lib-common.css',
   '/css/lib-bonus.css',
-  '/css/MyCasino-RWD-R.css',
+  '/css/M9-RWD-R.css',
+  '/css/mobile-fix.css',
   '/js/jquery-3.7.1.min.js',
   '/js/bootstrap.bundle-5.3.7.min.js',
   '/js/swiper-bundle.min.js',
