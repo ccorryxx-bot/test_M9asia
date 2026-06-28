@@ -2351,7 +2351,7 @@ if (typeof (BonusEventHandler) == 'undefined') {
 				bonusEventSticker.innerHTML =
 					'<div class="card">' +
 						'<div class="show-platform-logo">'+
-						'<img src="https://img.mpsimg.com/theme/images/src-common/PLATFORM-img/120x80-fullname/'+bonusEvent.platform+'-logo.webp">'+
+						'<img src="images/theme/images/src-common/PLATFORM-img/120x80-fullname/'+bonusEvent.platform+'-logo.webp">'+
 						'</div>'+
 						'<div class="show-bonus-event ' + showPlatformLogo + '"></div>' +
 						'<div class="card-tit">' +
